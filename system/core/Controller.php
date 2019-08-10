@@ -1,10 +1,8 @@
 <?php 
-if (! defined('PATH_SYSTEM')) {
+if (! defined('PATH_SYSTEM')) 
 	die('Bad requested!');
-}
 
-
-class FT_Controller{
+class Controller{
 	protected $view    = NULL;
 	protected $model   = NULL;
 	protected $library = NULL;
