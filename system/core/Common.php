@@ -6,8 +6,8 @@ function load()
 {
   
   $config = include_once PATH_APPLICATION . '/config/init.php';
-  $controller = empty($_GET['c']) ? $config['default_controller'] : $_GET['c'];
-  $action = empty($_GET['a']) ? $config['default_action'] : $_GET['a'];
+  $controller = empty($_GET['controller']) ? $config['default_controller'] : $_GET['controller'];
+  $action = empty($_GET['action']) ? $config['default_action'] : $_GET['action'];
   $controller = ucfirst(strtolower($controller)) . '_Controller';
   $action = strtolower($action) . 'Action';
 
@@ -16,6 +16,9 @@ function load()
   }
 
   include_once PATH_SYSTEM . '/core/Controller.php';
+  if (file_exists(PATH_APPLICATION . '/core/Base_Controller.php')){ 
+    include_once PATH_APPLICATION . '/core/Base_Controller.php';
+  }
   require_once PATH_APPLICATION . '/controller/' . $controller . '.php';
 
   if (!class_exists($controller)){
@@ -28,6 +31,6 @@ function load()
     die ('Không tìm thấy action');
   }
 
-  $controllerObject->{$action}();
+  $controllerObject->$action();
 }
 ?>

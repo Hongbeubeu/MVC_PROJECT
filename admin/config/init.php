@@ -1,7 +1,7 @@
 <?php
  
 return array(
-    'default_controller'    => 'index', 
+    'default_controller'    => 'Dashboard', 
     'default_action'        => 'index'
 );
 ?>
