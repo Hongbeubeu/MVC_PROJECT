@@ -1,9 +1,8 @@
 <?php 
-	define('PATH_SYSTEM', __DIR__ .'/system');
+	define('PATH_SYSTEM',      __DIR__ .'/system');
 	define('PATH_APPLICATION', __DIR__ .'/admin');
-
-	require (PATH_SYSTEM. '/config/config.php');
-	include_once PATH_SYSTEM . '/core/Common.php';
+	define('URL_ROOT', 'http://localhost/demo_mvc/admin.php');
+	include_once (PATH_SYSTEM . '/bootstrap.php');
 
 	load();
 ?>

@@ -1,6 +1,7 @@
 <?php
 if ( ! defined('PATH_SYSTEM')) 
     die ('Bad requested!');
+
     class User{
         private $db;
 
@@ -40,7 +41,7 @@ if ( ! defined('PATH_SYSTEM'))
             $row = $this->db->single();
 
             $hashed_password = $row->password;
-            if ( password_verify($password,$hashed_password) ) {
+            if ( $hashed_password === md5($password) ) {
                 return $row;
             } else {
                 return false;
@@ -53,7 +54,7 @@ if ( ! defined('PATH_SYSTEM'))
             $row = $this->db->single();
     
             $hashed_password = $row->password;
-            if ( password_verify($password,$hashed_password) ) {
+            if ($hashed_password === md5($password) ) {
                 return $row;
             } else {
                 return false;
