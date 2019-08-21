@@ -2,7 +2,6 @@
 	if (defined(PATH_SYSTEM)) {
 		die('Bad requested!');
 	}
-
 require PATH_APPLICATION . '/view/widget/header.php' ?>
 <div class="jumbotron jumbrotron-fluid">
 <h1 class="display-3">PHP MVC PROJECT</h1>

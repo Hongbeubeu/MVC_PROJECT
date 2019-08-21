@@ -1,5 +1,5 @@
 <?php 
-if(! defined('PATH_SYSTEM') || !isLoggedIn())
+if(! defined('PATH_SYSTEM') || !is_logged_in())
 	die('Bad Requested!');
 
 ?>

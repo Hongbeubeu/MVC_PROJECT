@@ -2,32 +2,28 @@
 	if (defined(PATH_SYSTEM)) {
 		die('Bad requested!');			
 	}
-	class Page_Controller extends Controller
+	class page_controller extends controller
 	{
 		
-		public function dashboardAction()
+		public function dashboard_action()
 		{	
 			$this -> view('/page/dashboard.php');
 		}
-		public function aboutAction()
+		public function about_action()
 		{
 			$this -> view('/page/about.php');
 		}
-		public function userAction()
+		public function user_action()
 		{
 			$this -> view('/page/user.php');
 		}
-		public function loginAction()
+		public function login_action()
 		{
 			$this -> view('/user/login.php');
 		}
-		public function registerAction()
+		public function register_action()
 		{
 			$this -> view('/user/register.php');
-		}
-		public function editAction()
-		{
-			$this -> view('/user/edit.php');
 		}
 	}
 ?>

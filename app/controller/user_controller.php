@@ -1,10 +1,10 @@
 <?php
-class User_Controller extends Controller{
+class user_controller extends controller{
     public function __construct(){
         $this->userModel = $this->model('user');
     }
 
-public function registerAction()
+public function register_action()
 {
     if ($_SERVER['REQUEST_METHOD']=='POST') {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -23,7 +23,7 @@ public function registerAction()
         if ( empty($data['email']) ) {
             $data['email_err'] = 'Please inform your email';
         } else {
-            if ( $this->userModel->getUserByEmail($data['email']) ) {
+            if ( $this->userModel->get_user_by_email($data['email']) ) {
                 $data['email_err'] = 'Email is already in use. Choose another one!';
             }
         }
@@ -71,7 +71,7 @@ public function registerAction()
 }
 }
 
-public function loginAction()
+public function login_action()
 {
     if ($_SERVER['REQUEST_METHOD']=='POST') {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -85,7 +85,7 @@ public function loginAction()
 
         if ( empty($data['email']) ) {
             $data['email_err'] = 'Please inform your email';
-        } else if (! $this->userModel->getUserByEmail($data['email']) ) {
+        } else if (! $this->userModel->get_user_by_email($data['email']) ) {
             $data['email_err'] = 'No user found!';
         }
 
@@ -96,7 +96,7 @@ public function loginAction()
         if ( empty($data['email_err']) && empty($data['password_err']) ) { 
             $userAuthenticated = $this->userModel->login($data['email'], $data['password']);
             if ( $userAuthenticated) {
-                $this->createUserSession($userAuthenticated);
+                $this->create_user_session($userAuthenticated);
             } else {
                 $data = [
                     'email' => trim($_POST['email']),
@@ -120,7 +120,7 @@ public function loginAction()
     }
 }
 
-public function logoutAction()
+public function logout_action()
 {
     unset($_SESSION['user_id']);
     unset($_SESSION['user_mail']);
@@ -129,7 +129,7 @@ public function logoutAction()
     redirect('page','dashboard');
 }
 
-public function createUserSession($user)
+public function create_user_session($user)
 {
     $_SESSION['user_id'] = $user->id;
     $_SESSION['user_email'] = $user->email;
@@ -137,7 +137,7 @@ public function createUserSession($user)
     $this -> view('/page/user.php',$user);
 }
 
-public function isLoggedIn()
+public function is_logged_in()
 {
     if ( isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_email'])) {
         return true;

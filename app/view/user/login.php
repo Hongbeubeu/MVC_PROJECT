@@ -6,7 +6,7 @@
   <div class="card card-body bg-light mt-5">
      <h3>Login</h3>
      <p>Please fill in your credentials to login</p>
-     <form action="admin.php?controller=user&action=login" method="post">
+     <form action=<?php echo URL_ROOT . "/admin/user/login"; ?> method="post">
         <div class="form-group">
            <label for="name">Email: <sup>*</sup></label>
            <input type="email" name="email" class="form-control form-control" value="">
@@ -22,7 +22,7 @@
               <input type="submit" value="Login" class="btn btn-success btn-block"/>
            </div>
            <div class="col">
-              <a href="admin.php?controller=page&action=register" class="btn btn-light btn-block">No account? Register</a>
+              <a href=<?php echo URL_ROOT . "/admin/page/register"; ?> class="btn btn-light btn-block">No account? Register</a>
            </div>
         </div>
      </form>

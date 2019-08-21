@@ -2,7 +2,7 @@
 if ( ! defined('PATH_SYSTEM')) 
     die ('Bad requested!');
 
-    class User{
+    class user{
         private $db;
 
         public function __construct(){
@@ -22,7 +22,7 @@ if ( ! defined('PATH_SYSTEM'))
             }
         }
     
-        public function deleteUser($id){
+        public function delete_user($id){
             $this->db->query('DELETE FROM users where id = :id');
 
             $this->db->bind(':id', $id);
@@ -48,7 +48,7 @@ if ( ! defined('PATH_SYSTEM'))
             }
         }
     
-        public function checkPassword($email,$password){
+        public function check_password($email,$password){
             $this->db->query('SELECT * from users where email = :email');
             $this->db->bind(':email', $email);
             $row = $this->db->single();
@@ -61,7 +61,7 @@ if ( ! defined('PATH_SYSTEM'))
             }
         }
 
-        public function getUserByEmail($email){
+        public function get_user_by_email($email){
             $this->db->query('SELECT * FROM users WHERE email = :email');
 
             $this->db->bind(':email', $email);
@@ -75,27 +75,14 @@ if ( ! defined('PATH_SYSTEM'))
             }
         }
 
-        public function getUserById($id){
+        public function get_user_by_id($id){
             $this->db->query('SELECT * FROM users WHERE id = :id');
 
             $this->db->bind(':id', $id);
             return $this->db->single();
         }
     
-        public function updatePassword($data){
-            $this->db->query('UPDATE users SET password = :password where email = :email');
-
-            $this->db->bind(':password', $data['password']);
-            $this->db->bind(':email', $data['email']);
-
-            if( $this->db->execute() ){
-                return true;
-            } else {
-                return false;
-            }
-        }
-    
-        public function getUsers(){
+        public function get_users(){
             $this->db->query('SELECT * FROM users');
             return $this->db->resultSet();
         }    
