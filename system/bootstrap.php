@@ -1,5 +1,4 @@
 <?php
-
     require_once PATH_SYSTEM . '/config/config.php';
 
     require_once PATH_SYSTEM . '/helper/url_helper.php';
