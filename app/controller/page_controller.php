@@ -2,8 +2,7 @@
 	if (defined(PATH_SYSTEM)) {
 		die('Bad requested!');			
 	}
-	class page_controller extends controller
-	{
+	class page_controller extends controller{
 		
 		public function dashboard_action()
 		{	
